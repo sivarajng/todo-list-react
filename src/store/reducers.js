@@ -1,4 +1,4 @@
-import C from '../constants'
+import C from './constants'
 import { combineReducers } from 'redux'
 
 export const goal = (state=10, action) => 

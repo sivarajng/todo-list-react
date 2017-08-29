@@ -1,11 +1,12 @@
-import C from './constants'
 import React from 'react'
 import { render } from 'react-dom'
-import routes from './routes'
-import sampleData from './initialState'
-import storeFactory from './store'
 import { Provider } from 'react-redux'
-import { addError } from './actions'
+
+import C from './store/constants'
+import routes from './router/routes'
+import sampleData from './store/initialState'
+import storeFactory from './store'
+import { addError } from './store/actions'
 
 const initialState = (localStorage["redux-store"]) ?
     JSON.parse(localStorage["redux-store"]) :
@@ -32,5 +33,5 @@ render(
 	<Provider store={store}>
 	   {routes}
 	</Provider>,
-  document.getElementById('react-container')
+  document.getElementById('react-app')
 )

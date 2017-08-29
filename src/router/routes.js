@@ -1,10 +1,24 @@
 import React from 'react'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
-import { App, Whoops404 } from './components'
-import SkiDayCount from './components/containers/SkiDayCount'
-import AddDayForm from './components/containers/AddDayForm'
-import SkiDayList from './components/containers/SkiDayList'
+import { App, PageNotFound } from '../components'
+import Home from '../components/Home'
+import List from '../components/List'
+import Add from '../components/Add'
 
+const routes = (
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <IndexRoute component={Home} />
+             <Route path="add" component={Add}/>
+              <Route path="list" component={List}/>
+            <Route path="*" component={PageNotFound} />
+        </Route>
+    </Router>
+)
+
+export default routes
+
+/*
 const routes = (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
@@ -17,5 +31,4 @@ const routes = (
         </Route>
     </Router>
 )
-
-export default routes 
+*/
