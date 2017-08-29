@@ -1,5 +1,5 @@
 import C from './constants'
-import fetch from 'isomorphic-fetch'
+
 
 export const addTask = (item) =>
     ({
@@ -13,11 +13,12 @@ export const editTask = (item) =>
         payload: item
     })
 
-export const removeTask = (item) =>
+export const removeTask = (item) => 
     ({
         type: C.REMOVE_TASK,
         payload: item
     })
+
 
 export const listTask = () =>
     ({
