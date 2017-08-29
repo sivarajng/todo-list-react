@@ -8,12 +8,47 @@
     display: grid;
     
 }
+.box-text{
+
+    height: 120px;
+    background-color: rgb(179, 229, 252);
+    margin: 10px;
+    text-align: left;
+    align-items: center;
+    display: grid;
+    padding: 10px;
+    
+}
+.box-add{
+
+    height: 20px;
+ //  background-color: rgb(179, 229, 252);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    
+}
 .box-list{
 
     height: 100%;
     background-color: rgb(179, 229, 252);
     margin: 10px;
     padding: 10px;
+    text-align: left;
+    align-items: center;
+    display: grid;
+    
+}
+.box-list-bottom{
+
+    height: 100%;
+    background-color:rgb(176, 190, 197);;
+   margin: 10px;
+    margin-top: -10px;
+    padding: 10px;
+       padding-top: 10px;
     text-align: left;
     align-items: center;
     display: grid;

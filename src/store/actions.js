@@ -13,7 +13,7 @@ export const editTask = (item) =>
         payload: item
     })
 
-export const removeTask = (item) => 
+export const removeTask = (item) =>
     ({
         type: C.REMOVE_TASK,
         payload: item
@@ -23,6 +23,18 @@ export const removeTask = (item) =>
 export const listTask = () =>
     ({
         type: C.LIST_TASK
+    })
+
+export const completeTask = (itm) =>
+    ({
+        type: C.COMPLETE_TASK,
+        payload: itm
+    })
+
+export const setStatus = (msg) =>
+    ({
+        type: C.SET_STATUS,
+        payload: msg
     })
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import '../stylesheets/Box.scss';
-import { listTask, removeTask } from '../store/actions'
+import { listTask, removeTask ,completeTask} from '../store/actions'
 
 class List extends React.Component {
 
@@ -12,16 +12,18 @@ class List extends React.Component {
   componentDidMount() {
 
     this.props.listTask();
-    this._edit = this._edit.bind(this);
+
     this._remove = this._remove.bind(this);
+    this._complete = this._complete.bind(this);
 
   }
-  _edit(itm) {
-    alert('edit' + itm.summary);
-  }
+
 
   _remove(itm) {
     this.props.removeTask(itm);
+  }
+  _complete(itm,status){
+    this.props.completeTask({summary:itm.summary,completed:status});
   }
 
   render() {
@@ -31,19 +33,29 @@ class List extends React.Component {
         <div style={{ fontSize: 25, color: 'black', padding: 10 }}>In Progress</div>
         {this.props.tasks.filter((iFil) => iFil.completed == false).map((itm) => {
           return (
+            <div >
             <div className="box-list" key={itm.summary}>
-              <div style={{ fontSize: 12, color: 'black' }} >
+              <div style={{ fontSize: 16, color: 'black' }} >
                 <span style={{ flex: 0.5, fontFamily: 'sans-serif' }}>
                   <span  >   {itm.summary} </span>
                 </span>
-                <span style={{ flex: 0.5, fontFamily: 'sans-serif', position: 'absolute', right: 80 }} onClick={() => this._edit(itm)}>
-                  <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   EDIT </span>
-                </span>
-                <span style={{ flex: 0.5, fontFamily: 'sans-serif', position: 'absolute', right: 20 }} onClick={() => this._remove(itm)}>
-                  <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   REMOVE </span>
-                </span>
+               
               </div>
 
+            </div>
+                          <div className="box-list-bottom" key={itm.summary+"2"}>
+                <div style={{ fontSize: 12, color: 'black' }}>
+
+                  <span style={{ flex: 0.5, fontFamily: 'sans-serif'}} onClick={() => this._complete(itm,true)}>
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   Complete   |</span>
+                  </span>
+
+                  <span style={{ flex: 0.5, fontFamily: 'sans-serif'}} onClick={() => this._remove(itm)}>
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   Remove </span>
+                  </span>
+                </div>
+
+              </div>
             </div>
           )
         })
@@ -53,19 +65,29 @@ class List extends React.Component {
         <div style={{ fontSize: 25, color: 'black', padding: 10 }}>Completed</div>
         {this.props.tasks.filter((iFil) => iFil.completed == true).map((itm) => {
           return (
-            <div className="box-list" key={itm.summary}>
-              <div style={{ fontSize: 12, color: 'black' }}>
-                <span style={{ flex: 0.5, fontFamily: 'sans-serif' }}>
-                  <span  >   {itm.summary} </span>
-                </span>
-                <span style={{ flex: 0.5, fontFamily: 'sans-serif', position: 'absolute', right: 80 }} onClick={() => this._edit(itm)}>
-                  <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   EDIT </span>
-                </span>
-                <span style={{ flex: 0.5, fontFamily: 'sans-serif', position: 'absolute', right: 20 }} onClick={() => this._remove(itm)}>
-                  <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   REMOVE </span>
-                </span>
-              </div>
+            <div>
+              <div className="box-list" key={itm.summary+"1"}>
+                <div style={{ fontSize: 16, color: 'black' }}>
+                  <span style={{ flex: 0.5, fontFamily: 'sans-serif' }}>
+                    <span  >   {itm.summary} </span>
+                  </span>
+                </div>
 
+              </div>
+              <div className="box-list-bottom" key={itm.summary+"2"}>
+                <div style={{ fontSize: 12, color: 'black' }}>
+
+                  <span style={{ flex: 0.5, fontFamily: 'sans-serif'}} onClick={() => this._complete(itm,false)}>
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   Un Complete   |</span>
+                  </span>
+
+              
+                  <span style={{ flex: 0.5, fontFamily: 'sans-serif'}} onClick={() => this._remove(itm)}>
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: '#01579b' }} >   Remove </span>
+                  </span>
+                </div>
+
+              </div>
             </div>
           )
         })
@@ -84,11 +106,11 @@ class List extends React.Component {
 const mapStateToProps = (state, props) => {
   console.log("HOME", state.tasks)
   return ({
-    tasks: state.tasks
+    tasks: state.tasks.tasks
   })
 }
 
 
 
 
-export default connect(mapStateToProps, {listTask,removeTask})(List)  
+export default connect(mapStateToProps, { listTask, removeTask,completeTask })(List)  

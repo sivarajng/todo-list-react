@@ -75,7 +75,7 @@ class Home extends React.Component {
 const mapStateToProps = (state, props) => {
   console.log("HOME" , state.tasks)
   return ({
-    tasks: state.tasks
+    tasks: state.tasks.tasks
   })
 }
 

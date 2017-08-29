@@ -1,16 +1,19 @@
 {
-	"tasks": [
-		{
-			"summary": "task 1",
-			"completed": false
-		},
-		{
-			"summary": "task 2",
-			"completed": false
-		},
-		{
-			"summary": "task 3",
-			"completed": true
-		}
-	]
+	"tasks": {
+		"addStatus": "",
+		"tasks": [
+			{
+				"summary": "call Alex on weekend",
+				"completed": false
+			},
+			{
+				"summary": "buy vegetables",
+				"completed": false
+			},
+			{
+				"summary": "clean the room",
+				"completed": true
+			}
+		]
+	}
 }
