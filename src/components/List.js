@@ -33,7 +33,7 @@ class List extends React.Component {
         <div style={{ fontSize: 25, color: 'black', padding: 10 }}>In Progress</div>
         {this.props.tasks.filter((iFil) => iFil.completed == false).map((itm) => {
           return (
-            <div >
+            <div key={itm.summary+"0"}>
             <div className="box-list" key={itm.summary}>
               <div style={{ fontSize: 16, color: 'black' }} >
                 <span style={{ flex: 0.5, fontFamily: 'sans-serif' }}>
@@ -65,7 +65,7 @@ class List extends React.Component {
         <div style={{ fontSize: 25, color: 'black', padding: 10 }}>Completed</div>
         {this.props.tasks.filter((iFil) => iFil.completed == true).map((itm) => {
           return (
-            <div>
+            <div key={itm.summary+"0"}>
               <div className="box-list" key={itm.summary+"1"}>
                 <div style={{ fontSize: 16, color: 'black' }}>
                   <span style={{ flex: 0.5, fontFamily: 'sans-serif' }}>
