@@ -8,6 +8,8 @@ import sampleData from './store/initialState'
 import storeFactory from './store'
 import { addError } from './store/actions'
 
+localStorage.clear();
+
 const initialState = (localStorage["redux-store"]) ?
     JSON.parse(localStorage["redux-store"]) :
     sampleData

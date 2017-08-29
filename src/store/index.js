@@ -8,21 +8,11 @@ const consoleMessages = store => next => action => {
 	let result
 
 	console.groupCollapsed(`dispatching action => ${action.type}`)
-	console.log('ski days', store.getState().allSkiDays.length)
+	console.log('PREV STATE', store.getState());
+
 	result = next(action)
-
-	let { allSkiDays, goal, errors, resortNames } = store.getState()
-
-	console.log(`
-
-		ski days: ${allSkiDays.length}
-		goal: ${goal}
-		fetching: ${resortNames.fetching}
-		suggestions: ${resortNames.suggestions}
-		errors: ${errors.length}
-
-	`)
-
+	
+	console.log('NEXT STATE', store.getState());
 	console.groupEnd()
 
 	return result

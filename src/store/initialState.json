@@ -1,28 +1,16 @@
 {
-	"allSkiDays": [
+	"tasks": [
 		{
-			"resort": "Kirkwood",
-			"date": "2016-12-7",
-			"powder": true,
-			"backcountry": false
+			"summary": "task 1",
+			"completed": false
 		},
 		{
-			"resort": "Squaw Valley",
-			"date": "2016-12-8",
-			"powder": false,
-			"backcountry": false
+			"summary": "task 2",
+			"completed": false
 		},
 		{
-			"resort": "Mt Tallac",
-			"date": "2016-12-9",
-			"powder": false,
-			"backcountry": true
+			"summary": "task 3",
+			"completed": true
 		}
-	],
-	"goal": 10,
-	"errors": [],
-	"resortNames": {
-		"fetching": false,
-		"suggestions": ["Squaw Valley", "Snowbird", "Stowe", "Steamboat"]
-	}
+	]
 }

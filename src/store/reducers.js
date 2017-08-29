@@ -1,48 +1,23 @@
 import C from './constants'
 import { combineReducers } from 'redux'
 
-export const goal = (state=10, action) => 
-	(action.type === C.SET_GOAL) ? 
-		 parseInt(action.payload) :
-		 state
+export const tasks = (state=[], action) => {
 
-export const skiDay = (state=null, action) => 
-  (action.type === C.ADD_DAY) ?
-  	action.payload :
-  	state
-
-export const errors = (state=[], action) => {
-  switch(action.type) {
-    case C.ADD_ERROR :
-    	return [
-         ...state,
-         action.payload
-    	]
-    case C.CLEAR_ERROR : 
-      return state.filter((message, i) => i !== action.payload)
-  	default: 
-  		return state
-  }
-}
-
-export const allSkiDays = (state=[], action) => {
 
   switch(action.type) {
 
-    case C.ADD_DAY : 
+    case C.ADD_TASK :
+      let newTask = [...state, payload];
+      return newTask;
 
-      const hasDay = state.some(skiDay => skiDay.date === action.payload.date)
+    case C.REMOVE_TASK :
+      return state 
 
-      return (hasDay) ?
-         state :
-         [
-           ...state,
-           skiDay(null, action)
-         ].sort((a, b) => new Date(b.date) - new Date(a.date))
+    case C.EDIT_TASK :
+      return state  
 
-    case C.REMOVE_DAY :
-
-      return state.filter(skiDay => skiDay.date !== action.payload)     
+    case C.LIST_TASK :
+      return state   
 
     default:
       return state
@@ -50,49 +25,9 @@ export const allSkiDays = (state=[], action) => {
 
 }
 
-export const fetching = (state=false, action) => {
-
-  switch(action.type) {
-
-    case C.FETCH_RESORT_NAMES :
-      return true
-
-    case C.CANCEL_FETCHING :
-      return false 
-
-    case C.CHANGE_SUGGESTIONS :
-      return false   
-
-    default:
-      return state
-  }
-
-}
-
-export const suggestions = (state=[], action) => {
-
-  switch(action.type) {
-
-    case C.CLEAR_SUGGESTIONS :
-      return []
-
-    case C.CHANGE_SUGGESTIONS :
-      return action.payload  
-
-    default :
-      return state
-  }
-
-}
 
 export default combineReducers({
-  allSkiDays,
-  goal,
-  errors,
-  resortNames: combineReducers({
-    fetching,
-    suggestions
-  })
+  tasks
 })
 
 

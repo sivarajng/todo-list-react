@@ -1,79 +1,28 @@
 import C from './constants'
 import fetch from 'isomorphic-fetch'
 
-export function addDay(resort, date, powder=false, backcountry=false) {
-
-    return {
-        type: C.ADD_DAY,
-        payload: {resort,date,powder,backcountry}
-    }
-
-}
-
-export const removeDay = function(date) {
-
-    return {
-        type: C.REMOVE_DAY,
-        payload: date
-    }
-
-}
-
-export const setGoal = (goal) => 
+export const addTask = (item) =>
     ({
-        type: C.SET_GOAL,
-        payload: goal
+        type: C.ADD_TASK,
+        payload: item
     })
 
-export const addError = (message) => 
-   ({
-      type: C.ADD_ERROR,
-      payload: message
-   })
-
-export const clearError = index => 
+export const editTask = (item) =>
     ({
-        type: C.CLEAR_ERROR,
-        payload: index
-    })   
-
-export const changeSuggestions = suggestions => 
-  ({
-    type: C.CHANGE_SUGGESTIONS,
-    payload: suggestions
-  })
-
-export const clearSuggestions = () => 
-    ({
-        type: C.CLEAR_SUGGESTIONS
+        type: C.EDIT_TASK,
+        payload: item
     })
 
-export const suggestResortNames = value => dispatch => {
-
-    dispatch({
-        type: C.FETCH_RESORT_NAMES
+export const removeTask = (item) =>
+    ({
+        type: C.REMOVE_TASK,
+        payload: item
     })
 
-    fetch('http://localhost:3333/resorts/' + value)
-        .then(response => response.json())
-        .then(suggestions => {
+export const listTask = () =>
+    ({
+        type: C.LIST_TASK
+    })
 
-            dispatch({
-                type: C.CHANGE_SUGGESTIONS,
-                payload: suggestions
-            })
 
-        })
-        .catch(error => {
 
-            dispatch(
-                addError(error.message)
-            )
-
-            dispatch({
-                type: C.CANCEL_FETCHING
-            })
-
-        })
-
-}
