@@ -1,33 +1,15 @@
 {
-  "name": "ski-day-counter-redux",
+  "name": "todo-list-react",
   "version": "1.0.0",
-  "description": "A sample application for Learning Redux the basics",
+  "description": "A sample To Do List application using React and Redux",
   "main": "./dist",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MoonTahoe/ski-day-counter-redux.git"
-  },
-  "keywords": [
-    "activity",
-    "counter",
-    "ski",
-    "day",
-    "tutorial",
-    "redux"
-  ],
-  "author": "Alex Banks <alex@moonhighway.com> (http://www.moonhighway.com)",
+  "author": "sivaraj",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MoonTahoe/ski-day-counter-redux/issues"
-  },
-  "homepage": "https://github.com/MoonTahoe/ski-day-counter-redux#readme",
   "dependencies": {
-    "cors": "^2.8.1",
     "express": "^4.14.0",
-    "isomorphic-fetch": "^2.2.1",
     "minimist": "^1.2.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
